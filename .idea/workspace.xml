@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3b18b8da-ebd8-4efa-b6d7-99e130867d37" name="Default Changelist" comment="" />
+    <list default="true" id="3b18b8da-ebd8-4efa-b6d7-99e130867d37" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/snake/core.cljc" beforeDir="false" afterPath="$PROJECT_DIR$/src/snake/core.cljc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/snake/main.cljs" beforeDir="false" afterPath="$PROJECT_DIR$/src/snake/main.cljs" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,36 +37,37 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="clj" value="9" />
-          <entry key="cljc" value="5" />
+          <entry key="cljc" value="6" />
           <entry key="cljs" value="14" />
           <entry key="css" value="1" />
+          <entry key="gitignore" value="1" />
           <entry key="html" value="5" />
           <entry key="log" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CLJC" value="5" />
+          <entry key="CLJC" value="6" />
           <entry key="CSS" value="1" />
           <entry key="Clojure" value="9" />
           <entry key="ClojureScript" value="14" />
           <entry key="HTML" value="5" />
-          <entry key="PLAIN_TEXT" value="1" />
+          <entry key="PLAIN_TEXT" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="clj" value="57" />
-          <entry key="cljc" value="73" />
-          <entry key="cljs" value="1068" />
+          <entry key="cljc" value="610" />
+          <entry key="cljs" value="1112" />
           <entry key="html" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="CLJC" value="73" />
+          <entry key="CLJC" value="610" />
           <entry key="Clojure" value="57" />
-          <entry key="ClojureScript" value="1068" />
+          <entry key="ClojureScript" value="1112" />
           <entry key="HTML" value="3" />
         </counts>
       </usages-collector>
@@ -70,11 +75,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/snake/app_component.cljs">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="105">
-              <caret line="7" column="20" lean-forward="true" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
+              <caret line="7" column="20" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -82,13 +87,13 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/snake/core.cljc">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="1" column="48" selection-start-line="1" selection-start-column="48" selection-end-line="1" selection-end-column="48" />
+            <state relative-caret-position="180">
+              <caret line="12" column="23" lean-forward="true" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="23" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/project.clj">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="123">
@@ -100,8 +105,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/snake/main.cljs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="21" lean-forward="true" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="21" />
+            <state relative-caret-position="210">
+              <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
             </state>
           </provider>
         </entry>
@@ -119,7 +124,7 @@
         <entry file="file://$PROJECT_DIR$/../chess-view-clojure/src/chess_view_clojure/app_component.cljs">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="62">
-              <caret line="24" column="2" lean-forward="true" selection-start-line="24" selection-start-column="2" selection-end-line="24" selection-end-column="2" />
+              <caret line="24" column="2" selection-start-line="24" selection-start-column="2" selection-end-line="24" selection-end-column="2" />
             </state>
           </provider>
         </entry>
@@ -128,7 +133,7 @@
         <entry file="file://$PROJECT_DIR$/../chess-view-clojure/src/chess_view_clojure/main.cljs">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="372">
-              <caret line="41" column="27" lean-forward="true" selection-start-line="41" selection-start-column="27" selection-end-line="41" selection-end-column="27" />
+              <caret line="41" column="27" selection-start-line="41" selection-start-column="27" selection-end-line="41" selection-end-column="27" />
             </state>
           </provider>
         </entry>
@@ -137,7 +142,7 @@
         <entry file="file://$PROJECT_DIR$/../chess-view-clojure/src/chess_view_clojure/state.cljc">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-2285">
-              <caret line="7" column="2" lean-forward="true" selection-start-line="7" selection-start-column="2" selection-end-line="7" selection-end-column="2" />
+              <caret line="7" column="2" selection-start-line="7" selection-start-column="2" selection-end-line="7" selection-end-column="2" />
             </state>
           </provider>
         </entry>
@@ -166,10 +171,11 @@
         <option value="$PROJECT_DIR$/resources/public/index.html" />
         <option value="$PROJECT_DIR$/src/snake/core.cljs" />
         <option value="$PROJECT_DIR$/../chess-view-clojure/src/chess_view_clojure/app_component.cljs" />
-        <option value="$PROJECT_DIR$/src/snake/main.cljs" />
         <option value="$PROJECT_DIR$/src/snake/app_component.cljs" />
-        <option value="$PROJECT_DIR$/src/snake/core.cljc" />
         <option value="$PROJECT_DIR$/project.clj" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/src/snake/core.cljc" />
+        <option value="$PROJECT_DIR$/src/snake/main.cljs" />
       </list>
     </option>
   </component>
@@ -209,28 +215,6 @@
             <path>
               <item name="snake" type="b2602c69:ProjectViewProjectNode" />
               <item name="chess-view-clojure" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="snake" type="b2602c69:ProjectViewProjectNode" />
-              <item name="chess-view-clojure" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="snake" type="b2602c69:ProjectViewProjectNode" />
-              <item name="chess-view-clojure" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="snake" type="b2602c69:ProjectViewProjectNode" />
-              <item name="chess-view-clojure" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="snake" type="b2602c69:ProjectViewProjectNode" />
-              <item name="chess-view-clojure" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="chess_view_clojure" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="snake" type="b2602c69:ProjectViewProjectNode" />
@@ -277,7 +261,7 @@
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
-  <component name="ReplState" timestamp="1534078751471">{:repl-history {:ide [], :local [{:command &quot;lein figwheel&quot;, :offset 13, :ns &quot;user&quot;}], :remote []}}</component>
+  <component name="ReplState" timestamp="1534081629473">{:repl-history {:ide [], :local [{:command &quot;lein figwheel&quot;, :offset 13, :ns &quot;user&quot;} {:command &quot;[[x y]]&quot;, :offset 7, :ns &quot;snake.core&quot;}], :remote []}}</component>
   <component name="RunDashboard">
     <option name="ruleStates">
       <list>
@@ -316,19 +300,20 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1533814369565</updated>
-      <workItem from="1533814373082" duration="11441000" />
+      <workItem from="1533814373082" duration="14131000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11441000" />
+    <option name="totallyTimeSpent" value="14131000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Designer" />
       <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18526466" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14306152" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" />
@@ -341,7 +326,7 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="REPL" sideWeight="0.5036145" side_tool="true" visible="true" weight="0.21244635" />
+      <window_info anchor="right" id="REPL" sideWeight="0.5036145" side_tool="true" visible="true" weight="0.2274678" />
       <window_info anchor="right" id="Leiningen" sideWeight="0.48915663" weight="0.41845495" />
       <window_info anchor="right" id="Palette&#9;" />
       <window_info anchor="right" id="Database" sideWeight="0.49638554" weight="0.3297568" />
@@ -370,14 +355,14 @@
     <entry file="file://$PROJECT_DIR$/../chess-view-clojure/src/chess_view_clojure/state.cljc">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2285">
-          <caret line="7" column="2" lean-forward="true" selection-start-line="7" selection-start-column="2" selection-end-line="7" selection-end-column="2" />
+          <caret line="7" column="2" selection-start-line="7" selection-start-column="2" selection-end-line="7" selection-end-column="2" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../chess-view-clojure/src/chess_view_clojure/main.cljs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="372">
-          <caret line="41" column="27" lean-forward="true" selection-start-line="41" selection-start-column="27" selection-end-line="41" selection-end-column="27" />
+          <caret line="41" column="27" selection-start-line="41" selection-start-column="27" selection-end-line="41" selection-end-column="27" />
         </state>
       </provider>
     </entry>
@@ -405,21 +390,7 @@
     <entry file="file://$PROJECT_DIR$/../chess-view-clojure/src/chess_view_clojure/app_component.cljs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="62">
-          <caret line="24" column="2" lean-forward="true" selection-start-line="24" selection-start-column="2" selection-end-line="24" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/snake/app_component.cljs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="20" lean-forward="true" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/snake/main.cljs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="21" lean-forward="true" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="21" />
+          <caret line="24" column="2" selection-start-line="24" selection-start-column="2" selection-end-line="24" selection-end-column="2" />
         </state>
       </provider>
     </entry>
@@ -430,10 +401,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/snake/core.cljc">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="48" selection-start-line="1" selection-start-column="48" selection-end-line="1" selection-end-column="48" />
+        <state relative-caret-position="165">
+          <caret line="11" column="5" lean-forward="true" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -441,6 +412,27 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="123">
           <caret line="13" column="32" selection-start-line="13" selection-start-column="32" selection-end-line="13" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/snake/main.cljs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/snake/core.cljc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="23" lean-forward="true" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/snake/app_component.cljs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="20" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
         </state>
       </provider>
     </entry>

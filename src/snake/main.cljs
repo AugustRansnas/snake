@@ -1,5 +1,6 @@
 (ns snake.main
     (:require
+      [snake.core :as core]
       [reagent.core :as reagent :refer [atom]]
       [snake.app-component :as app-component]))
 
@@ -9,7 +10,7 @@
 
 ;; define your app data so that it doesn't get over-written on reload
 
-(defonce app-state-atom (atom nil))
+(defonce app-state-atom (atom (core/create-state [15 10])))
 
 
 (defn on-js-reload []
