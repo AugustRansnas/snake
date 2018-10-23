@@ -16,7 +16,7 @@
 (defn on-js-reload []
   ;; optionally touch your app-state to force rerendering depending on
   ;; your application
-  ;; (swap! app-state update-in [:__figwheel_counter] inc)
+   (swap! app-state-atom update-in [:__figwheel_counter] inc)
 )
 
 (reagent/render-component [app-component/app-component app-state-atom]
