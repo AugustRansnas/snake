@@ -6,18 +6,29 @@
 
 (enable-console-print!)
 
-(println "This text is printed from src/snake/core.cljs. Go ahead and edit it and see reloading in action.")
+(defonce app-state-atom (atom nil))
 
-;; define your app data so that it doesn't get over-written on reload
+(add-watch app-state-atom :reagent-state-atom
+           (fn [_ _ _ state]
+             state))
 
-(defonce app-state-atom (atom (core/create-state [15 10])))
+(swap! app-state-atom
+       (fn []
+         (core/create-state [15 10])))
 
+(defn handle-event!
+  [event]
+  (condp = (:name event)
+    :start-game-clicked
+    (swap! app-state-atom core/start-game (:data event))))
+
+(reagent/render-component [app-component/app-component {:app-state-atom app-state-atom
+                                                        :trigger-event (fn [event]
+                                                                         (handle-event! event))}]
+                          (. js/document (getElementById "app")))
 
 (defn on-js-reload []
   ;; optionally touch your app-state to force rerendering depending on
   ;; your application
-   (swap! app-state-atom update-in [:__figwheel_counter] inc)
-)
-
-(reagent/render-component [app-component/app-component app-state-atom]
-                          (. js/document (getElementById "app")))
+  (swap! app-state-atom update-in [:__figwheel_counter] inc)
+  )

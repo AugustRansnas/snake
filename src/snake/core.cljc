@@ -13,34 +13,35 @@
   (->> (for [x-pos (range x)
              y-pos (range y)]
          [x-pos y-pos])
-       (into #{}))
-  )
+       (into #{})))
 
 (defn create-snake
   "Creates da snake. Size matters."
-  {:test (fn [] (is=(create-snake) #{[5 5] [6 5] [7 5] [8 5]}))}
+  {:test (fn [] (is= (create-snake) #{[5 5] [6 5] [7 5] [8 5]}))}
   []
-  (into #{[5 5] [6 5] [7 5] [8 5]})
-  )
+  (into #{[5 5] [6 5] [7 5] [8 5]}))
 
 (defn create-state
   {:test (fn []
            (is= (create-state [4 3])
                 {:game-header game-header
-                 :board (create-board [4 3])
-                 :snake (create-snake)
+                 :board       (create-board [4 3])
+                 :snake       (create-snake)
                  }
                 ))}
   [[x y]]
-  {
-   :game-header game-header
-   :board (create-board [x y])
-   :snake (create-snake)
-   :game-state "idle"
-   }
-  )
+  {:game-header game-header
+   :board       (create-board [x y])
+   :snake       (create-snake)
+   :game-state  "idle"})
+
+(defn game-is-running?
+  [state]
+  (= (:game-state state) "active"))
+
 
 (defn start-game
   [state]
-  (assoc :game-state state)
-  )
+  (if (not (game-is-running? state))
+    (assoc state :game-state "active")
+    (assoc state :game-state "idle")))
