@@ -1,43 +1,43 @@
 (ns snake.core
   (:require [ysera.test :refer [is= is is-not]]))
 
-(def game-header "August's snake. Size matters.")
-
-(defn create-board
-  "Creates da game board i.e valid positions for the snake"
-  {:test (fn []
-           (is= (create-board [4 3])
-                #{[0 0] [0 1] [0 2] [1 0] [1 1] [1 2] [2 0] [2 1] [2 2] [3 0] [3 1] [3 2]}
-                ))}
-  [[x y]]
-  (->> (for [x-pos (range x)
-             y-pos (range y)]
-         [x-pos y-pos])
-       (into #{})))
+(def game-header "Snake. Size matters")
 
 (defn create-snake
-  "Creates da snake. Size matters."
-  {:test (fn [] (is= (create-snake) #{[5 5] [6 5] [7 5] [8 5]}))}
   []
-  (into #{[5 5] [6 5] [7 5] [8 5]}))
+  [[5 20] [6 20] [7 20] [8 20]])
 
 (defn create-state
-  {:test (fn []
-           (is= (create-state [4 3])
-                {:game-header game-header
-                 :board       (create-board [4 3])
-                 :snake       (create-snake)
-                 }
-                ))}
-  [[x y]]
+  []
   {:game-header game-header
-   :board       (create-board [x y])
    :snake       (create-snake)
-   :game-state  "idle"})
+   :direction   "right"
+   :game-state  "active"})
+
+
+
+
+(defn get-snake-coordinates
+  [state]
+  (:snake state))
+
+(defn update-snake-position
+  {:test (fn []
+           (is= (-> (create-state)
+                    (update-snake-position)
+                    (get-snake-coordinates))
+                [[41 20] [42 20] [43 20] [44 20]])
+           )}
+  [state]
+  (assoc state :snake  (map (fn [coordinate]
+                                   [(inc (first coordinate)) (last coordinate)]
+                                   )
+                                 (get-snake-coordinates state))))
+
 
 (defn game-is-running?
-  [state]
-  (= (:game-state state) "active"))
+  [app-state-atom]
+  (= (:game-state app-state-atom) "active"))
 
 
 (defn start-game
@@ -45,3 +45,7 @@
   (if (not (game-is-running? state))
     (assoc state :game-state "active")
     (assoc state :game-state "idle")))
+
+(defn update-game
+  [state]
+  (update-snake-position state))

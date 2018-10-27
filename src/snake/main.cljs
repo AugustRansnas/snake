@@ -1,6 +1,7 @@
 (ns snake.main
     (:require
       [snake.core :as core]
+      [snake.engine :as engine]
       [reagent.core :as reagent :refer [atom]]
       [snake.app-component :as app-component]))
 
@@ -14,13 +15,17 @@
 
 (swap! app-state-atom
        (fn []
-         (core/create-state [15 10])))
+         (core/create-state)))
 
 (defn handle-event!
   [event]
   (condp = (:name event)
     :start-game-clicked
+    (println "click")
     (swap! app-state-atom core/start-game (:data event))))
+
+
+(engine/start app-state-atom)
 
 (reagent/render-component [app-component/app-component {:app-state-atom app-state-atom
                                                         :trigger-event (fn [event]

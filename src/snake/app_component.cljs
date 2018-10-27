@@ -1,5 +1,6 @@
 (ns snake.app-component
-  (:require [reagent.core :as reagent]))
+  (:require [reagent.core :as reagent]
+            [snake.core :as core]))
 
 
 (defn get-button-text
@@ -8,42 +9,55 @@
     (cond (= game-state "idle") "Start game"
           (= game-state "active") "Stop game")))
 
-(defn draw-canvas-contents [canvas]
+(defn draw-background
+  [ctx width height]
+  (set! (.-fillStyle ctx) "green")
+  (.fillRect ctx 10 10 width height))
+
+(defn draw-snake
+  [state ctx]
+  (set! (.-fillStyle ctx) "black")
+  (println (core/get-snake-coordinates state))
+  (doseq [coordinate (core/get-snake-coordinates state)]
+    (.fillRect ctx
+               (* (first coordinate) 10)
+               (* (last coordinate) 10)
+               10
+               10)))
+
+(defn draw-canvas-contents [canvas state]
   (let [ctx (.getContext canvas "2d")
-        w (.-clientWidth canvas)
-        h (.-clientHeight canvas)]
-    (.fillRect ctx 10 10 w h)))
+        width 800
+        height 400]
+    (draw-background ctx width height)
+    (draw-snake state ctx)))
+
+
 
 
 (defn game-component
-  [_]
+  [{state :state trigger-event :trigger-event}]
   (let [local-state (reagent/atom nil)]
     (reagent/create-class
       {:component-did-update
        (fn [this]
-         (println "i updated")
-         (draw-canvas-contents (.-firstChild @local-state)))
+         (draw-canvas-contents @local-state (:state (reagent.core/props this))))
 
        :component-did-mount
        (fn [this]
-         (println "i mounted")
-         (reset! local-state (reagent/dom-node this)))
+         (draw-canvas-contents @local-state (:state (reagent.core/props this))))
 
        :reagent-render
-       (fn [{state :state trigger-event :trigger-event}]
-         (println "i rendered")
+       (fn []
          [:div
-          ;; reagent-render is called before the compoment mounts, so
-          ;; protect against the null dom-node that occurs on the first
-          ;; render
-          [:canvas (if-let [node @local-state]
-                     {:width  (.-clientWidth node)
-                      :height (.-clientHeight node)})]
-          [:div [:button {:on-click (fn [] (trigger-event {:name :start-game-clicked}))} (get-button-text state)]]])})))
+          [:canvas {:ref    (fn [canvas] (reset! local-state canvas))
+                    :width  800
+                    :height 400}]
+          [:div [:button {:on-click (fn [] (trigger-event {:name :start-game-clicked}))}
+                 (get-button-text state)]]])})))
 
-  (defn app-component
-    [{app-state-atom :app-state-atom
-      trigger-event  :trigger-event}]
-    (let [state @app-state-atom]
-      [game-component {:state state :trigger-event trigger-event}]))
+(defn app-component
+  [{app-state-atom :app-state-atom
+    trigger-event  :trigger-event}]
+  [game-component {:state @app-state-atom :trigger-event trigger-event}])
 
