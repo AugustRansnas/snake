@@ -17,7 +17,6 @@
 (defn draw-snake
   [state ctx]
   (set! (.-fillStyle ctx) "black")
-  (println (core/get-snake-coordinates state))
   (doseq [coordinate (core/get-snake-coordinates state)]
     (.fillRect ctx
                (* (first coordinate) 10)
