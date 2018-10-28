@@ -24,6 +24,22 @@
     (println "click")
     (swap! app-state-atom core/start-game (:data event))))
 
+(defn parse-keydown-event
+  [event]
+  (get {"ArrowUp"    :up
+        "ArrowDown"  :down
+        "ArrowLeft"  :left
+        "ArrowRight" :right}
+       (.-key event)))
+
+(defn keydown-handler
+  [event]
+  (.preventDefault event)
+  (swap! app-state-atom core/update-direction (parse-keydown-event event)))
+
+
+(js/window.addEventListener "keydown" (partial keydown-handler))
+
 
 (engine/start app-state-atom)
 

@@ -3,6 +3,8 @@
 
 (def game-header "Snake. Size matters")
 
+(def directions {:right [1 0] :left [-1 0] :down [0 1] :up [0 -1]})
+
 (defn create-snake
   []
   [[5 20] [6 20] [7 20] [8 20]])
@@ -11,28 +13,53 @@
   []
   {:game-header game-header
    :snake       (create-snake)
-   :direction   "right"
+   :direction   (:right directions)
    :game-state  "active"})
-
-
 
 
 (defn get-snake-coordinates
   [state]
   (:snake state))
 
-(defn update-snake-position
+(defn get-direction-coordinates
   {:test (fn []
+           (is= (get-direction-coordinates :right)
+                [1 0])
+           (is= (get-direction-coordinates :down)
+                [0 -1]))}
+  [direction]
+  (get directions direction))
+
+(defn update-direction
+  [state direction]
+  (assoc state :direction (get-direction-coordinates direction)))
+
+(defn move-snake
+  {:test (fn []
+           (comment (is= (-> (create-state)
+                             (move-snake)
+                             (get-snake-coordinates))
+                         [[6 20] [7 20] [8 20] [9 20]])
+                    (is= (-> (create-state)
+                             (update-direction :down)
+                             (move-snake)
+                             (get-snake-coordinates))
+                         [[6 20] [7 20] [8 20] [8 19]]))
            (is= (-> (create-state)
-                    (update-snake-position)
+                    (update-direction :right)
+                    ((fn [state] (println (:snake state)) state))
+                    (move-snake)
+                    ((fn [state] (println (:snake state)) state))
+                    (move-snake)
+                    ((fn [state] (println (:snake state)) state))
                     (get-snake-coordinates))
-                [[41 20] [42 20] [43 20] [44 20]])
-           )}
+                [[7 20] [8 20] [9 20] [10 20]]))}
   [state]
-  (assoc state :snake  (map (fn [coordinate]
-                                   [(inc (first coordinate)) (last coordinate)]
-                                   )
-                                 (get-snake-coordinates state))))
+  (assoc state :snake (as-> (:snake state) $
+                            (conj $ (map + (last $) (:direction state)))
+                            (remove (fn [coordinate]
+                                      (= coordinate (first $))) $)
+                            (into [] $))))
 
 
 (defn game-is-running?
@@ -48,4 +75,4 @@
 
 (defn update-game
   [state]
-  (update-snake-position state))
+  (move-snake state))

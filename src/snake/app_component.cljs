@@ -2,7 +2,6 @@
   (:require [reagent.core :as reagent]
             [snake.core :as core]))
 
-
 (defn get-button-text
   [state]
   (let [game-state (:game-state state)]
@@ -30,9 +29,6 @@
         height 400]
     (draw-background ctx width height)
     (draw-snake state ctx)))
-
-
-
 
 (defn game-component
   [{state :state trigger-event :trigger-event}]
