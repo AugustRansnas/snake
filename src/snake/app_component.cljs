@@ -23,12 +23,24 @@
                10
                10)))
 
+(defn draw-food
+  [state ctx]
+  (let [food-coordinates (core/get-food-coordinates state)]
+    (set! (.-fillStyle ctx) "purple")
+    (.fillRect ctx
+               (* (first food-coordinates) 10)
+               (* (last food-coordinates) 10)
+               10
+               10))
+  )
+
 (defn draw-canvas-contents [canvas state]
   (let [ctx (.getContext canvas "2d")
         width 800
         height 400]
     (draw-background ctx width height)
-    (draw-snake state ctx)))
+    (draw-snake state ctx)
+    (draw-food state ctx)))
 
 (defn game-component
   [{state :state trigger-event :trigger-event}]
