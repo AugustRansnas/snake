@@ -11,7 +11,7 @@
 (defn draw-background
   [ctx width height]
   (set! (.-fillStyle ctx) "green")
-  (.fillRect ctx 10 10 width height))
+  (.fillRect ctx 0 0 width height))
 
 (defn draw-snake
   [state ctx]
@@ -36,8 +36,8 @@
 
 (defn draw-canvas-contents [canvas state]
   (let [ctx (.getContext canvas "2d")
-        width 800
-        height 400]
+        width (get-in state [:game-size :width])
+        height (get-in state [:game-size :height])]
     (draw-background ctx width height)
     (draw-snake state ctx)
     (draw-food state ctx)))
@@ -58,9 +58,10 @@
        (fn []
          [:div
           [:canvas {:ref    (fn [canvas] (reset! local-state canvas))
-                    :width  800
-                    :height 400}]
-          [:div [:button {:on-click (fn [] (trigger-event {:name :start-game-clicked}))}
+                    :width  (get-in state [:game-size :width])
+                    :height (get-in state [:game-size :height])
+                    :style  {:border "1px solid black"}}]
+          [:div [:button {:on-click (fn [] (trigger-event {:name :start-stop-game-clicked}))}
                  (get-button-text state)]]])})))
 
 (defn app-component

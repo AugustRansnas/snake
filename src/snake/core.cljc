@@ -11,7 +11,26 @@
 
 (defn create-food
   []
-  [(rand-int 30) (rand-int 30)])
+  [(rand-int 79) (rand-int 39)])
+
+(defn temp-food
+  []
+  [79 ])
+
+;; [0 0] vänstra hörnet uppe
+;; [79 0] högra hörnet uppe
+;; [0 39] vänstra hörnet nere
+;; [79 39] högra hörnet nere
+
+;; y -1 & 40
+;; x -1 & 80
+
+;; [- 1 y]
+;; [80 y]
+;; [x -1]
+;; [x 40]
+
+
 
 (defn create-state
   []
@@ -19,7 +38,9 @@
    :snake       (create-snake)
    :direction   (:right directions)
    :food        (create-food)
-   :game-state  "active"})
+   :game-size   {:width 800
+                 :height 400}
+   :game-state  "idle"})
 
 (defn get-snake-coordinates
   [state]
@@ -28,6 +49,16 @@
 (defn get-food-coordinates
   [state]
   (:food state))
+
+(defn crash?
+  [state]
+  (let [snake-head (last (:snake state))
+        x (first snake-head)
+        y (last snake-head)]
+    (or (= x -1)
+        (= y -1)
+        (= x 80)
+        (= y 40))))
 
 (defn should-grow-snake?
   [state]
@@ -59,6 +90,27 @@
   [direction]
   (get directions direction))
 
+(defn should-update-direction?
+  {:test (fn []
+           (is= (should-update-direction? (create-state) :left)
+                false)
+           (is= (should-update-direction? (create-state) :up)
+                true)
+           (is= (should-update-direction? (create-state) :right)
+                false))}
+  [state direction]
+  (if (= (:direction state) (get-direction-coordinates direction))
+    false
+    (condp = direction
+      :right
+      (not= (:direction state) (get-direction-coordinates :left))
+      :left
+      (not= (:direction state) (get-direction-coordinates :right))
+      :up
+      (not= (:direction state) (get-direction-coordinates :down))
+      :down
+      (not= (:direction state) (get-direction-coordinates :up)))))
+
 (defn update-direction
   [state direction]
   (assoc state :direction (get-direction-coordinates direction)))
@@ -76,11 +128,8 @@
                 [[6 20] [7 20] [8 20] [8 21]])
            (is= (-> (create-state)
                     (update-direction :right)
-                    ((fn [state] (println (:snake state)) state))
                     (move-snake)
-                    ((fn [state] (println (:snake state)) state))
                     (move-snake)
-                    ((fn [state] (println (:snake state)) state))
                     (get-snake-coordinates))
                 [[7 20] [8 20] [9 20] [10 20]]))}
   [state]
@@ -92,18 +141,20 @@
 
 
 (defn game-is-running?
-  [app-state-atom]
-  (= (:game-state app-state-atom) "active"))
-
-
-(defn start-game
   [state]
-  (if (not (game-is-running? state))
-    (assoc state :game-state "active")
-    (assoc state :game-state "idle")))
+  (= (:game-state state) "active"))
+
+
+(defn start-stop-game
+  [state]
+  (if (game-is-running? state)
+    (assoc state :game-state "idle")
+    (assoc state :game-state "active")))
 
 (defn update-game
   [state]
-  (-> state
-      (move-snake)
-      (maybe-grow-snake)))
+  (if (not (crash? state))
+    (-> state
+        (move-snake)
+        (maybe-grow-snake))
+    (start-stop-game state)))

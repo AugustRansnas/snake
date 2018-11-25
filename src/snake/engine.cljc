@@ -11,7 +11,8 @@
   (async/go-loop
     []
     (async/<! (async/timeout tick-speed))
-    (swap! app-state-atom core/update-game)
+    (if (core/game-is-running? @app-state-atom)
+      (swap! app-state-atom core/update-game) nil)
     (recur)))
 
 

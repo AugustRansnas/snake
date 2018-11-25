@@ -1,9 +1,9 @@
 (ns snake.main
-    (:require
-      [snake.core :as core]
-      [snake.engine :as engine]
-      [reagent.core :as reagent :refer [atom]]
-      [snake.app-component :as app-component]))
+  (:require
+    [snake.core :as core]
+    [snake.engine :as engine]
+    [reagent.core :as reagent :refer [atom]]
+    [snake.app-component :as app-component]))
 
 (enable-console-print!)
 
@@ -20,9 +20,8 @@
 (defn handle-event!
   [event]
   (condp = (:name event)
-    :start-game-clicked
-    (println "click")
-    (swap! app-state-atom core/start-game (:data event))))
+    :start-stop-game-clicked
+    (swap! app-state-atom core/start-stop-game)))
 
 (defn parse-keydown-event
   [event]
@@ -35,7 +34,9 @@
 (defn keydown-handler
   [event]
   (.preventDefault event)
-  (swap! app-state-atom core/update-direction (parse-keydown-event event)))
+  (let [key-event (parse-keydown-event event)]
+    (when (core/should-update-direction? @app-state-atom key-event)
+      (swap! app-state-atom core/update-direction key-event))))
 
 
 (js/window.addEventListener "keydown" (partial keydown-handler))
@@ -44,8 +45,8 @@
 (engine/start app-state-atom)
 
 (reagent/render-component [app-component/app-component {:app-state-atom app-state-atom
-                                                        :trigger-event (fn [event]
-                                                                         (handle-event! event))}]
+                                                        :trigger-event  (fn [event]
+                                                                          (handle-event! event))}]
                           (. js/document (getElementById "app")))
 
 (defn on-js-reload []
